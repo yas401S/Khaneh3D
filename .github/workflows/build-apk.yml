@@ -30,6 +30,11 @@ jobs:
         run: |
           unzip -q Khaneh3D_FIREBASE_FIRESTORE.zip -d project
 
+      - name: Enable AndroidX
+        run: |
+          echo "android.useAndroidX=true" >> project/android/gradle.properties
+          echo "android.enableJetifier=true" >> project/android/gradle.properties
+
       - name: Build APK
         run: |
           gradle -p project/android assembleDebug --no-daemon
